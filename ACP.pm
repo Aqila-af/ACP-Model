@@ -11,6 +11,7 @@ const startA = 100;             /* Initial number of active customers */
 const startC = 40;              /* Initial number of churned customers */
 const startP = 30;              /* Initial number of potential customers */
 const startF = 5;               /* Initial number of factors affecting active customers */
+const startS = 100;             
 
 species A;
 species C;
@@ -36,6 +37,6 @@ rule potentialAcquisition {
 }
 
 rule satisfactionDecay {
-    S -[1]-> S @ 0.95            /* Decay factor of 0.95 per time step */
+    S -[#S * 0.95]-> S;            /* Decay factor of 0.95 per time step */
 }
-system init = A <startA> | C <startC> | P <startP> | F <startF>; | S <1>;
+system init = A <startA> | C <startC> | P <startP> | F <startF>; | S <startS>;
