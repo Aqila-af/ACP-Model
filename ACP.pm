@@ -36,7 +36,9 @@ rule potentialAcquisition {
   P -[ #P * (nuPotentialAcquisition * marketingEffectiveness * promotionEffectiveness * serviceImprovementEffectiveness) ]-> A
 }
 
+ 
 rule satisfactionDecay {
-    S -[#S * 0.95]-> S;            /* Decay factor of 0.95 per time step */
+    S -[ #S * 0.95 ]-> S         
 }
-system init = A <startA> | C <startC> | P <startP> | F <startF>; | S <startS>;
+
+system init = A<startA> | C<startC> | P<startP> | F<startF> | S<startS>;
