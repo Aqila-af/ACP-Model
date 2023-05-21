@@ -7,6 +7,9 @@ param marketingEffectiveness = 0.3;  /* Effectiveness of marketing efforts */
 param promotionEffectiveness = 0.2;  /* Effectiveness of promotional campaigns */
 param serviceImprovementEffectiveness = 0.1;  /* Effectiveness of service improvements */
 
+param decayFactor = 0.95;
+param samplingTime = 1.5;
+
 const startA = 100;             /* Initial number of active customers */
 const startC = 40;              /* Initial number of churned customers */
 const startP = 30;              /* Initial number of potential customers */
@@ -38,7 +41,7 @@ rule potentialAcquisition {
 
  
 rule satisfactionDecay {
-    S -[ #S * 0.95 ]-> S         
+    S -[ #S * decayFactor^(samplingTime) ]-> S         
 }
 
 system init = A<startA> | C<startC> | P<startP> | F<startF> | S<startS>;
