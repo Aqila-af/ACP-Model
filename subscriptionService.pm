@@ -51,12 +51,6 @@ rule CustomerChurn for i in [1, n]{
 
 }
 
-rule CustomerSatisfaction for i in [1, n]{
-
-        S|A[i] -[ #S *%A * (serviceQuality * satisfaction_rate) ]-> S[i]|A[i]
-
-}
-
 
 /* _-_-_-_-_-_-_-_-_-_-_ Measures _-_-_-_-_-_-_-_-_-_-_ */
 
